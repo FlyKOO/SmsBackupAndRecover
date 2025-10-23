@@ -73,19 +73,22 @@
                 android:key="backup_mms"
                 android:title="@string/ui_backup_mms_label"
                 android:summary="@string/ui_backup_mms_desc"
-                android:defaultValue="true"/>
+                android:defaultValue="false"
+                android:isPreferenceVisible="false"/>
 
         <CheckBoxPreference
                 android:key="backup_calllog"
                 android:title="@string/ui_backup_calllog_label"
                 android:summary="@string/ui_backup_calllog_desc"
-                android:defaultValue="false"/>
+                android:defaultValue="false"
+                android:isPreferenceVisible="false"/>
 
         <PreferenceScreen
                 android:fragment="com.zegoggles.smssync.activity.fragments.AdvancedSettings$Backup$CallLog"
                 android:key="com.zegoggles.smssync.activity.fragments.AdvancedSettings$Backup$CallLog"
                 android:persistent="false"
-                android:title="@string/ui_backup_calllog_settings_label">
+                android:title="@string/ui_backup_calllog_settings_label"
+                android:isPreferenceVisible="false">
 
             <EditTextPreference
                     android:key="imap_folder_calllog"
@@ -101,26 +104,30 @@
                     android:defaultValue="@string/call_type_everything_value"
                     android:summary="@string/ui_backup_calllog_types_desc"
                     android:entries="@array/backup_calllog_types_entries"
-                    android:entryValues="@array/backup_calllog_types_values"/>
+                    android:entryValues="@array/backup_calllog_types_values"
+                    android:isPreferenceVisible="false"/>
 
             <!-- add call log entries to calendar -->
             <CheckBoxPreference
                     android:key="backup_calllog_sync_calendar_enabled"
                     android:title="@string/ui_backup_calllog_sync_calendar_enabled_label"
                     android:defaultValue="false"
-                    android:summary="@string/ui_backup_calllog_sync_calendar_enabled_desc"/>
+                    android:summary="@string/ui_backup_calllog_sync_calendar_enabled_desc"
+                    android:isPreferenceVisible="false"/>
 
             <ListPreference
                     android:key="backup_calllog_sync_calendar"
                     android:dependency="backup_calllog_sync_calendar_enabled"
                     android:defaultValue="-1"
-                    android:summary="@string/ui_backup_calllog_sync_calendar_desc"/>
+                    android:summary="@string/ui_backup_calllog_sync_calendar_desc"
+                    android:isPreferenceVisible="false"/>
 
             <CheckBoxPreference
                     android:key="backup_calllog_after_call"
                     android:title="@string/ui_backup_calllog_after_call_label"
                     android:defaultValue="false"
-                    android:summary="@string/ui_backup_calllog_after_call_desc"/>
+                    android:summary="@string/ui_backup_calllog_after_call_desc"
+                    android:isPreferenceVisible="false"/>
         </PreferenceScreen>
 
         <ListPreference
@@ -172,13 +179,15 @@
             android:key="enable_auto_sync"
             android:title="@string/ui_enable_auto_sync_label"
             android:summary="@string/ui_enable_auto_sync_desc"
-            android:defaultValue="false"/>
+            android:defaultValue="false"
+            android:isPreferenceVisible="false"/>
 
     <PreferenceScreen
             android:fragment="com.zegoggles.smssync.activity.fragments.AutoBackupSettings"
             android:key="com.zegoggles.smssync.activity.fragments.AutoBackupSettings"
             android:persistent="false"
-            android:title="@string/ui_auto_backup_settings_label">
+            android:title="@string/ui_auto_backup_settings_label"
+            android:isPreferenceVisible="false">
 
         <ListPreference
                 android:key="auto_backup_schedule"
@@ -236,7 +245,8 @@
             <CheckBoxPreference
                     android:key="restore_calllog"
                     android:title="@string/ui_restore_calllog_label"
-                    android:defaultValue="true"/>
+                    android:defaultValue="false"
+                    android:isPreferenceVisible="false"/>
 
             <CheckBoxPreference
                     android:key="restore_starred_only"
@@ -316,7 +326,7 @@
             android:key="donate"
             android:title="@string/donate"
             android:summary="@string/donate_summary"
-            >
+            android:isPreferenceVisible="false">
 
         <intent android:targetClass="com.zegoggles.smssync.activity.donation.DonationActivity"
                 android:targetPackage="com.zegoggles.smssync"/>
