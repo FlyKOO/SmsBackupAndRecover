@@ -1,0 +1,40 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '11'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Build release APK
+        run: ./gradlew assembleRelease
+
+      - name: Collect APK artifact
+        run: |
+          mkdir -p artifacts
+          cp app/build/outputs/apk/release/app-release.apk artifacts/SmsBackupAndRecover-release.apk
+
+      - name: Commit generated APK
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: update generated APK"
+          file_pattern: artifacts/*.apk
